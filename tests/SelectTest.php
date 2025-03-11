@@ -2,7 +2,7 @@
 
 use Laravolt\SemanticForm\Elements\Select;
 
-class SelectTest extends PHPUnit\Framework\TestCase
+final class SelectTest extends PHPUnit\Framework\TestCase
 {
 	public function testSelectCanBeCreated(): void
 	{

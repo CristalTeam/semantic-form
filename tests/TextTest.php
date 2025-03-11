@@ -2,7 +2,7 @@
 
 use Laravolt\SemanticForm\Elements\Text;
 
-class TextTest extends PHPUnit\Framework\TestCase
+final class TextTest extends PHPUnit\Framework\TestCase
 {
 	public function testTextCanBeCreated(): void
 	{
