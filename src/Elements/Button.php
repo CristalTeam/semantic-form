@@ -3,10 +3,10 @@
 class Button extends FormControl
 {
 
-    protected $attributes = array(
+    protected $attributes = [
         'type'  => 'button',
         'class' => 'ui button',
-    );
+    ];
 
     protected $value;
 

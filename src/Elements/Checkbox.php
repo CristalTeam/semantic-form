@@ -2,19 +2,16 @@
 
 class Checkbox extends Input
 {
-    protected $attributes = array(
+    protected $attributes = [
         'type' => 'checkbox',
-    );
-
-    private $modifier = '';
+    ];
 
     private $checked;
 
-    public function __construct($name, $value = 1, $modifier = '')
+    public function __construct($name, $value = 1, private $modifier = '')
     {
         parent::__construct($name);
         $this->setValue($value);
-        $this->modifier = $modifier;
     }
 
     public function render()

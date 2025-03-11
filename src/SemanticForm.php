@@ -274,7 +274,7 @@ class SemanticForm
         return $submit;
     }
 
-    public function select($name, $options = array(), $defaultValue = null, $opt = ['addClass' => 'fluid'])
+    public function select($name, $options = [], $defaultValue = null, $opt = ['addClass' => 'fluid'])
     {
         $select = new Select($name, $options);
 

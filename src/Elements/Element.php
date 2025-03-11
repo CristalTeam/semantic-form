@@ -1,8 +1,8 @@
 <?php namespace Laravolt\SemanticForm\Elements;
 
-abstract class Element
+abstract class Element implements \Stringable
 {
-    protected $attributes = array();
+    protected $attributes = [];
 
     protected $label = false;
 
@@ -90,7 +90,7 @@ abstract class Element
         if (isset($this->attributes['class'])) {
 
             $existingClasses = explode(' ', $this->attributes['class']);
-            $newClasses = explode(' ', $class);
+            $newClasses = explode(' ', (string) $class);
 
             $class = implode(' ', array_unique(array_merge($existingClasses, $newClasses)));
 
@@ -147,9 +147,9 @@ abstract class Element
 
     abstract public function render();
 
-    public function __toString()
+    public function __toString(): string
     {
-        return $this->render();
+        return (string) $this->render();
     }
 
     protected function beforeRender()
@@ -189,9 +189,9 @@ abstract class Element
 
     public function __call($method, $params)
     {
-        $params = count($params) ? $params : array($method);
-        $params = array_merge(array($method), $params);
-        call_user_func_array(array($this, 'attribute'), $params);
+        $params = count($params) ? $params : [$method];
+        $params = array_merge([$method], $params);
+        call_user_func_array($this->attribute(...), $params);
 
         return $this;
     }

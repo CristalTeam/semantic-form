@@ -153,7 +153,7 @@ class SemanticFormTest extends PHPUnit_Framework_TestCase
 
     public function testRadioGroupWithValueAndOldInput()
     {
-        $oldInput = Mockery::mock('Laravolt\SemanticForm\OldInput\OldInputInterface');
+        $oldInput = Mockery::mock(\Laravolt\SemanticForm\OldInput\OldInputInterface::class);
         $oldInput->shouldReceive('hasOldInput')->andReturn(true);
         $oldInput->shouldReceive('getOldInput')->with('fruit')->andReturn('orange');
 
@@ -258,7 +258,7 @@ class SemanticFormTest extends PHPUnit_Framework_TestCase
 
     public function testCheckboxGroupWithValueAndOldInput()
     {
-        $oldInput = Mockery::mock('Laravolt\SemanticForm\OldInput\OldInputInterface');
+        $oldInput = Mockery::mock(\Laravolt\SemanticForm\OldInput\OldInputInterface::class);
         $oldInput->shouldReceive('hasOldInput')->andReturn(true);
         $oldInput->shouldReceive('getOldInput')->with('fruit')->andReturn(['orange' => 'orange']);
 
@@ -329,59 +329,59 @@ class SemanticFormTest extends PHPUnit_Framework_TestCase
 
     public function buttonProvider()
     {
-        return array(
-            array('Click Me', 'click-me', '<button type="button" class="ui button" name="click-me">Click Me</button>'),
-            array('Click Me', null, '<button type="button" class="ui button">Click Me</button>')
-        );
+        return [
+            ['Click Me', 'click-me', '<button type="button" class="ui button" name="click-me">Click Me</button>'],
+            ['Click Me', null, '<button type="button" class="ui button">Click Me</button>']
+        ];
     }
 
     public function testSelect()
     {
         $expected = '<select class="ui dropdown search" name="color"><option value="red">Red</option><option value="blue">Blue</option></select>';
-        $result = (string)$this->form->select('color', array('red' => 'Red', 'blue' => 'Blue'));
+        $result = (string)$this->form->select('color', ['red' => 'Red', 'blue' => 'Blue']);
         $this->assertEquals($expected, $result);
 
         $expected = '<select class="ui dropdown search" name="fruit"><option value="apple">Granny Smith</option><option value="berry">Blueberry</option></select>';
-        $result = (string)$this->form->select('fruit', array('apple' => 'Granny Smith', 'berry' => 'Blueberry'));
+        $result = (string)$this->form->select('fruit', ['apple' => 'Granny Smith', 'berry' => 'Blueberry']);
         $this->assertEquals($expected, $result);
 
         $expected = '<select class="ui dropdown search" name="fruit"><option value="apple" selected>Granny Smith</option><option value="berry">Blueberry</option></select>';
-        $result = (string)$this->form->select('fruit', array('apple' => 'Granny Smith', 'berry' => 'Blueberry'), 'apple');
+        $result = (string)$this->form->select('fruit', ['apple' => 'Granny Smith', 'berry' => 'Blueberry'], 'apple');
         $this->assertEquals($expected, $result);
     }
 
     public function testSelectWithLabel()
     {
         $expected = '<div class="field"><label>Color</label><select class="ui dropdown search" name="color"><option value="red">Red</option><option value="blue">Blue</option></select></div>';
-        $result = (string)$this->form->select('color', array('red' => 'Red', 'blue' => 'Blue'))->label('Color');
+        $result = (string)$this->form->select('color', ['red' => 'Red', 'blue' => 'Blue'])->label('Color');
         $this->assertEquals($expected, $result);
     }
 
     public function testSelectCanPrependOption()
     {
         $expected = '<select class="ui dropdown search" name="color"><option value="">First</option><option value="red">Red</option><option value="blue">Blue</option></select>';
-        $result = (string)$this->form->select('color', array('red' => 'Red', 'blue' => 'Blue'))->prependOption('', 'First');
+        $result = (string)$this->form->select('color', ['red' => 'Red', 'blue' => 'Blue'])->prependOption('', 'First');
         $this->assertEquals($expected, $result);
     }
 
     public function testSelectCanHavePlaceholder()
     {
         $expected = '<select class="ui dropdown search" name="color"><option value="">Please Select</option><option value="red">Red</option><option value="blue">Blue</option></select>';
-        $result = (string)$this->form->select('color', array('red' => 'Red', 'blue' => 'Blue'))->placeholder('Please Select');
+        $result = (string)$this->form->select('color', ['red' => 'Red', 'blue' => 'Blue'])->placeholder('Please Select');
         $this->assertEquals($expected, $result);
     }
 
     public function testSelectCanHavePlaceholderWithDefaultLabel()
     {
         $expected = '<select class="ui dropdown search" name="color"><option value="">-- Select --</option><option value="red">Red</option><option value="blue">Blue</option></select>';
-        $result = (string)$this->form->select('color', array('red' => 'Red', 'blue' => 'Blue'))->placeholder();
+        $result = (string)$this->form->select('color', ['red' => 'Red', 'blue' => 'Blue'])->placeholder();
         $this->assertEquals($expected, $result);
     }
 
     public function testSelectCanAppendOption()
     {
         $expected = '<select class="ui dropdown search" name="color"><option value="red">Red</option><option value="blue">Blue</option><option value="">Last</option></select>';
-        $result = (string)$this->form->select('color', array('red' => 'Red', 'blue' => 'Blue'))->appendOption('', 'Last');
+        $result = (string)$this->form->select('color', ['red' => 'Red', 'blue' => 'Blue'])->appendOption('', 'Last');
         $this->assertEquals($expected, $result);
     }
 
@@ -416,7 +416,7 @@ class SemanticFormTest extends PHPUnit_Framework_TestCase
 
     public function testRenderTextWithOldInput()
     {
-        $oldInput = Mockery::mock('Laravolt\SemanticForm\OldInput\OldInputInterface');
+        $oldInput = Mockery::mock(\Laravolt\SemanticForm\OldInput\OldInputInterface::class);
         $oldInput->shouldReceive('hasOldInput')->andReturn(true);
         $oldInput->shouldReceive('getOldInput')->with('title')->andReturn('Hello "quotes"');
 
@@ -429,7 +429,7 @@ class SemanticFormTest extends PHPUnit_Framework_TestCase
 
     public function testRenderCheckboxWithOldInput()
     {
-        $oldInput = Mockery::mock('Laravolt\SemanticForm\OldInput\OldInputInterface');
+        $oldInput = Mockery::mock(\Laravolt\SemanticForm\OldInput\OldInputInterface::class);
         $oldInput->shouldReceive('hasOldInput')->andReturn(true);
         $oldInput->shouldReceive('getOldInput')->with('terms')->andReturn('agree');
 
@@ -442,7 +442,7 @@ class SemanticFormTest extends PHPUnit_Framework_TestCase
 
     public function testRenderRadioWithOldInput()
     {
-        $oldInput = Mockery::mock('Laravolt\SemanticForm\OldInput\OldInputInterface');
+        $oldInput = Mockery::mock(\Laravolt\SemanticForm\OldInput\OldInputInterface::class);
         $oldInput->shouldReceive('hasOldInput')->andReturn(true);
         $oldInput->shouldReceive('getOldInput')->with('color')->andReturn('green');
 
@@ -455,20 +455,20 @@ class SemanticFormTest extends PHPUnit_Framework_TestCase
 
     public function testRenderSelectWithOldInput()
     {
-        $oldInput = Mockery::mock('Laravolt\SemanticForm\OldInput\OldInputInterface');
+        $oldInput = Mockery::mock(\Laravolt\SemanticForm\OldInput\OldInputInterface::class);
         $oldInput->shouldReceive('hasOldInput')->andReturn(true);
         $oldInput->shouldReceive('getOldInput')->with('color')->andReturn('blue');
 
         $this->form->setOldInputProvider($oldInput);
 
         $expected = '<select class="ui dropdown search" name="color"><option value="red">Red</option><option value="blue" selected>Blue</option></select>';
-        $result = (string)$this->form->select('color', array('red' => 'Red', 'blue' => 'Blue'));
+        $result = (string)$this->form->select('color', ['red' => 'Red', 'blue' => 'Blue']);
         $this->assertEquals($expected, $result);
     }
 
     public function testRenderTextAreaWithOldInput()
     {
-        $oldInput = Mockery::mock('Laravolt\SemanticForm\OldInput\OldInputInterface');
+        $oldInput = Mockery::mock(\Laravolt\SemanticForm\OldInput\OldInputInterface::class);
         $oldInput->shouldReceive('hasOldInput')->andReturn(true);
         $oldInput->shouldReceive('getOldInput')->with('bio')->andReturn('This is my bio');
 
@@ -481,7 +481,7 @@ class SemanticFormTest extends PHPUnit_Framework_TestCase
 
     public function testRenderingTextAreaWithOldInputEscapesDangerousCharacters()
     {
-        $oldInput = Mockery::mock('Laravolt\SemanticForm\OldInput\OldInputInterface');
+        $oldInput = Mockery::mock(\Laravolt\SemanticForm\OldInput\OldInputInterface::class);
         $oldInput->shouldReceive('hasOldInput')->andReturn(true);
         $oldInput->shouldReceive('getOldInput')->with('bio')->andReturn('<script>alert("xss!");</script>');
 
@@ -501,7 +501,7 @@ class SemanticFormTest extends PHPUnit_Framework_TestCase
 
     public function testCanCheckForErrorMessage()
     {
-        $errorStore = Mockery::mock('Laravolt\SemanticForm\ErrorStore\ErrorStoreInterface');
+        $errorStore = Mockery::mock(\Laravolt\SemanticForm\ErrorStore\ErrorStoreInterface::class);
         $errorStore->shouldReceive('hasError')->with('email')->andReturn(true);
 
         $this->form->setErrorStore($errorStore);
@@ -509,7 +509,7 @@ class SemanticFormTest extends PHPUnit_Framework_TestCase
         $result = $this->form->hasError('email');
         $this->assertTrue($result);
 
-        $errorStore = Mockery::mock('Laravolt\SemanticForm\ErrorStore\ErrorStoreInterface');
+        $errorStore = Mockery::mock(\Laravolt\SemanticForm\ErrorStore\ErrorStoreInterface::class);
         $errorStore->shouldReceive('hasError')->with('email')->andReturn(false);
 
         $this->form->setErrorStore($errorStore);
@@ -520,7 +520,7 @@ class SemanticFormTest extends PHPUnit_Framework_TestCase
 
     public function testCanRetrieveErrorMessage()
     {
-        $errorStore = Mockery::mock('Laravolt\SemanticForm\ErrorStore\ErrorStoreInterface');
+        $errorStore = Mockery::mock(\Laravolt\SemanticForm\ErrorStore\ErrorStoreInterface::class);
         $errorStore->shouldReceive('hasError')->andReturn(true);
         $errorStore->shouldReceive('getError')->with('email')->andReturn('The e-mail address is invalid.');
 
@@ -533,7 +533,7 @@ class SemanticFormTest extends PHPUnit_Framework_TestCase
 
     public function testCanRetrieveFormattedErrorMessage()
     {
-        $errorStore = Mockery::mock('Laravolt\SemanticForm\ErrorStore\ErrorStoreInterface');
+        $errorStore = Mockery::mock(\Laravolt\SemanticForm\ErrorStore\ErrorStoreInterface::class);
         $errorStore->shouldReceive('hasError')->andReturn(true);
         $errorStore->shouldReceive('getError')->with('email')->andReturn('The e-mail address is invalid.');
 
@@ -546,7 +546,7 @@ class SemanticFormTest extends PHPUnit_Framework_TestCase
 
     public function testFormattedErrorMessageReturnsNothingIfNoError()
     {
-        $errorStore = Mockery::mock('Laravolt\SemanticForm\ErrorStore\ErrorStoreInterface');
+        $errorStore = Mockery::mock(\Laravolt\SemanticForm\ErrorStore\ErrorStoreInterface::class);
         $errorStore->shouldReceive('hasError')->with('email')->andReturn(false);
 
         $this->form->setErrorStore($errorStore);
@@ -602,7 +602,7 @@ class SemanticFormTest extends PHPUnit_Framework_TestCase
 
     public function testRenderDateWithOldInput()
     {
-        $oldInput = Mockery::mock('Laravolt\SemanticForm\OldInput\OldInputInterface');
+        $oldInput = Mockery::mock(\Laravolt\SemanticForm\OldInput\OldInputInterface::class);
         $oldInput->shouldReceive('hasOldInput')->andReturn(true);
         $oldInput->shouldReceive('getOldInput')->with('date_of_birth')->andReturn('1999-04-06');
 
@@ -615,7 +615,7 @@ class SemanticFormTest extends PHPUnit_Framework_TestCase
 
     public function testRenderEmailWithOldInput()
     {
-        $oldInput = Mockery::mock('Laravolt\SemanticForm\OldInput\OldInputInterface');
+        $oldInput = Mockery::mock(\Laravolt\SemanticForm\OldInput\OldInputInterface::class);
         $oldInput->shouldReceive('hasOldInput')->andReturn(true);
         $oldInput->shouldReceive('getOldInput')->with('email')->andReturn('example@example.com');
 
@@ -628,7 +628,7 @@ class SemanticFormTest extends PHPUnit_Framework_TestCase
 
     public function testRenderHiddenWithOldInput()
     {
-        $oldInput = Mockery::mock('Laravolt\SemanticForm\OldInput\OldInputInterface');
+        $oldInput = Mockery::mock(\Laravolt\SemanticForm\OldInput\OldInputInterface::class);
         $oldInput->shouldReceive('hasOldInput')->andReturn(true);
         $oldInput->shouldReceive('getOldInput')->with('secret')->andReturn('my-secret-string');
 
@@ -850,7 +850,7 @@ class SemanticFormTest extends PHPUnit_Framework_TestCase
         $object = $this->getStubObject();
         $this->form->bind($object);
         $expected = '<select class="ui dropdown search" name="gender"><option value="male" selected>Male</option><option value="female">Female</option></select>';
-        $result = (string)$this->form->select('gender', array('male' => 'Male', 'female' => 'Female'));
+        $result = (string)$this->form->select('gender', ['male' => 'Male', 'female' => 'Female']);
         $this->assertEquals($expected, $result);
     }
 
@@ -865,7 +865,7 @@ class SemanticFormTest extends PHPUnit_Framework_TestCase
 
     public function testOldInputTakesPrecedenceOverBinding()
     {
-        $oldInput = Mockery::mock('Laravolt\SemanticForm\OldInput\OldInputInterface');
+        $oldInput = Mockery::mock(\Laravolt\SemanticForm\OldInput\OldInputInterface::class);
         $oldInput->shouldReceive('hasOldInput')->andReturn(true);
         $oldInput->shouldReceive('getOldInput')->with('first_name')->andReturn('Steve');
         $this->form->setOldInputProvider($oldInput);
@@ -915,7 +915,7 @@ class SemanticFormTest extends PHPUnit_Framework_TestCase
 
     public function testBindArray()
     {
-        $model = array('first_name' => 'John');
+        $model = ['first_name' => 'John'];
         $this->form->bind($model);
         $expected = '<input type="text" name="first_name" value="John">';
         $result = (string)$this->form->text('first_name');

@@ -1,13 +1,10 @@
 <?php namespace Laravolt\SemanticForm\Elements;
 
-class GroupWrapper
+class GroupWrapper implements \Stringable
 {
-	protected $formGroup;
-
-	public function __construct($formGroup)
-	{
-		$this->formGroup = $formGroup;
-	}
+	public function __construct(protected $formGroup)
+    {
+    }
 
 	public function render()
 	{
@@ -20,9 +17,9 @@ class GroupWrapper
 		return $this;
 	}
 
-	public function __toString()
+	public function __toString(): string
 	{
-		return $this->render();
+		return (string) $this->render();
 	}
 
 	public function labelClass($class)
@@ -45,7 +42,7 @@ class GroupWrapper
 
 	public function __call($method, $parameters)
 	{
-		call_user_func_array(array($this->formGroup->control(), $method), $parameters);
+		call_user_func_array([$this->formGroup->control(), $method], $parameters);
 		return $this;
 	}
 }

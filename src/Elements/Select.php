@@ -9,11 +9,11 @@ class Select extends FormControl
     private $options;
     private $selected;
 
-    protected $attributes = array(
+    protected $attributes = [
         'class' => 'ui dropdown search',
-    );
+    ];
 
-    public function __construct($name, $options = array())
+    public function __construct($name, $options = [])
     {
         if($options instanceof Collection) {
             $options = $options->toArray();
@@ -135,7 +135,7 @@ class Select extends FormControl
     public function multiple()
     {
         $name = $this->attributes['name'];
-        if (substr($name, -2) != '[]') {
+        if (!str_ends_with((string) $name, '[]')) {
             $name .= '[]';
         }
 

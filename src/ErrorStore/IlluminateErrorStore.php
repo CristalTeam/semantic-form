@@ -4,11 +4,8 @@ use Illuminate\Session\Store as Session;
 
 class IlluminateErrorStore implements ErrorStoreInterface
 {
-    private $session;
-
-    public function __construct(Session $session)
+    public function __construct(private readonly Session $session)
     {
-        $this->session = $session;
     }
 
     public function hasError($key)
@@ -43,6 +40,6 @@ class IlluminateErrorStore implements ErrorStoreInterface
 
     protected function transformKey($key)
     {
-        return str_replace(array('.', '[]', '[', ']'), array('_', '', '.', ''), $key);
+        return str_replace(['.', '[]', '[', ']'], ['_', '', '.', ''], $key);
     }
 }

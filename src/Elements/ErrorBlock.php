@@ -4,11 +4,8 @@ use Laravolt\SemanticForm\Elements\Element;
 
 class ErrorBlock extends Element
 {
-	private $message;
-
-	public function __construct($message)
+	public function __construct(private $message)
 	{
-		$this->message = $message;
 		$this->addClass('ui pointing red basic label');
 	}
 

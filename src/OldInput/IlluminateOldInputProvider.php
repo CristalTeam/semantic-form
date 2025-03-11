@@ -4,11 +4,8 @@ use Illuminate\Session\Store as Session;
 
 class IlluminateOldInputProvider implements OldInputInterface
 {
-    private $session;
-
-    public function __construct(Session $session)
+    public function __construct(private readonly Session $session)
     {
-        $this->session = $session;
     }
 
     public function hasOldInput()
@@ -23,6 +20,6 @@ class IlluminateOldInputProvider implements OldInputInterface
 
     protected function transformKey($key)
     {
-        return str_replace(array('.', '[]', '[', ']'), array('_', '', '.', ''), $key);
+        return str_replace(['.', '[]', '[', ']'], ['_', '', '.', ''], $key);
     }
 }
