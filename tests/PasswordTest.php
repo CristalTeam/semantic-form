@@ -2,7 +2,7 @@
 
 use Laravolt\SemanticForm\Elements\Password;
 
-class PasswordTest extends PHPUnit_Framework_TestCase
+class PasswordTest extends PHPUnit\Framework\TestCase
 {
 	public function testPasswordCanBeCreated()
 	{
