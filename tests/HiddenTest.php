@@ -4,12 +4,12 @@ use Laravolt\SemanticForm\Elements\Hidden;
 
 class HiddenTest extends PHPUnit\Framework\TestCase
 {
-	public function testTextCanBeCreated()
+	public function testTextCanBeCreated(): void
 	{
 		$hidden = new Hidden('_token');
 	}
 
-	public function testCanRenderBasicHidden()
+	public function testCanRenderBasicHidden(): void
 	{
 		$hidden = new Hidden('_token');
 
@@ -24,7 +24,7 @@ class HiddenTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testCanRenderWithValue()
+	public function testCanRenderWithValue(): void
 	{
 		$hidden = new Hidden('_token');
 
