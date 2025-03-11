@@ -1,0 +1,39 @@
+<?php namespace Laravolt\SemanticForm\Elements;
+
+abstract class Input extends FormControl
+{
+    public function render()
+    {
+
+    	$this->beforeRender();
+    	
+        if ($this->label) {
+            $element = clone $this;
+            $element->label = false;
+
+            return (new Field($this->label, $element))->addClass($this->fieldWidth)->render();
+        }
+
+        $result = '<input';
+
+        $result .= $this->renderAttributes();
+
+        $result .= '>';
+
+        return $result;
+    }
+
+    public function value($value)
+    {
+        $this->setValue($value);
+
+        return $this;
+    }
+
+    protected function setValue($value)
+    {
+        $this->setAttribute('value', $value);
+
+        return $this;
+    }
+}
