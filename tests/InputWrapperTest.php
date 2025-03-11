@@ -4,12 +4,12 @@ use Laravolt\SemanticForm\Elements\InputWrapper;
 
 class InputWrapperTest extends PHPUnit\Framework\TestCase
 {
-	public function testTextCanBeCreated()
+	public function testTextCanBeCreated(): void
 	{
 		new InputWrapper();
 	}
 
-	public function testCanRenderBasicInput()
+	public function testCanRenderBasicInput(): void
 	{
         $input = new InputWrapper();
 
@@ -18,7 +18,7 @@ class InputWrapperTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
 	}
 
-	public function testCanRenderInputWithIcon()
+	public function testCanRenderInputWithIcon(): void
 	{
         $input = new InputWrapper();
         $input->prependIcon('users');
@@ -50,7 +50,7 @@ class InputWrapperTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
 	}
 
-    public function testCanRenderInputWithLabel()
+    public function testCanRenderInputWithLabel(): void
     {
         $input = new InputWrapper();
         $input->prependLabel('http://');
