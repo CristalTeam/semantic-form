@@ -1,5 +1,6 @@
 <?php
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Laravolt\SemanticForm\SemanticForm;
 
 class SemanticFormTest extends PHPUnit\Framework\TestCase
@@ -318,9 +319,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    /**
-     * @dataProvider buttonProvider
-     */
+    #[DataProvider('buttonProvider')]
     public function testButton($value, $name, $expected)
     {
         $result = (string)$this->form->button($value, $name);
