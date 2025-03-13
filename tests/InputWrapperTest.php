@@ -6,6 +6,8 @@ final class InputWrapperTest extends PHPUnit\Framework\TestCase
 {
 	public function testTextCanBeCreated(): void
 	{
+        $this->expectNotToPerformAssertions(); 
+        
 		new InputWrapper();
 	}
 

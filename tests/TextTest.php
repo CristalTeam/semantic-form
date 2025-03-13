@@ -6,7 +6,9 @@ final class TextTest extends PHPUnit\Framework\TestCase
 {
 	public function testTextCanBeCreated(): void
 	{
-		$text = new Text('email');
+		$this->expectNotToPerformAssertions(); 
+
+		new Text('email');
 	}
 
 	public function testCanRenderBasicText(): void

@@ -6,7 +6,9 @@ final class SelectTest extends PHPUnit\Framework\TestCase
 {
 	public function testSelectCanBeCreated(): void
 	{
-		$select = new Select('birth_year');
+		$this->expectNotToPerformAssertions(); 
+
+		new Select('birth_year');
 	}
 
 	public function testCanRenderBasicSelect(): void

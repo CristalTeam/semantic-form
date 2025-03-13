@@ -6,7 +6,9 @@ final class HiddenTest extends PHPUnit\Framework\TestCase
 {
 	public function testTextCanBeCreated(): void
 	{
-		$hidden = new Hidden('_token');
+		$this->expectNotToPerformAssertions(); 
+
+		new Hidden('_token');
 	}
 
 	public function testCanRenderBasicHidden(): void

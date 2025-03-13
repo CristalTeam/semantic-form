@@ -6,7 +6,9 @@ final class TextAreaTest extends PHPUnit\Framework\TestCase
 {
 	public function testTextAreaCanBeCreated(): void
 	{
-		$textarea = new TextArea('bio');
+		$this->expectNotToPerformAssertions(); 
+
+		new TextArea('bio');
 	}
 
 	public function testRenderBasicTextArea(): void
