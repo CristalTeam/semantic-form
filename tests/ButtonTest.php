@@ -6,7 +6,9 @@ final class ButtonTest extends PHPUnit\Framework\TestCase
 {
     public function testButtonCanBeCreated(): void
     {
-        $submit = new Button('Click Me', 'click-me');
+        $this->expectNotToPerformAssertions();
+
+        new Button('Click Me', 'click-me');
     }
 
     public function testRenderBasicButton(): void

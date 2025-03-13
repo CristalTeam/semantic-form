@@ -11,7 +11,9 @@ final class LabelTest extends PHPUnit\Framework\TestCase
 
 	public function testLabelCanBeCreated(): void
 	{
-		$label = new Label('Email');
+		$this->expectNotToPerformAssertions(); 
+
+		new Label('Email');
 	}
 
 	public function testRenderBasicLabel(): void

@@ -6,7 +6,9 @@ final class RadioButtonTest extends PHPUnit\Framework\TestCase
 {
 	public function testRadioButtonCanBeCreated(): void
 	{
-		$radio = new RadioButton('color');
+		$this->expectNotToPerformAssertions(); 
+
+		new RadioButton('color');
 	}
 
 	public function testRenderBasicRadioButton(): void

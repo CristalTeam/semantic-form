@@ -6,7 +6,9 @@ final class DateTest extends PHPUnit\Framework\TestCase
 {
 	public function testDateCanBeCreated(): void
 	{
-		$date = new Date('birthday');
+		$this->expectNotToPerformAssertions(); 
+
+		new Date('birthday');
 	}
 
 	public function testRenderDateInput(): void

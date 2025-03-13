@@ -6,6 +6,8 @@ final class DatepickerTest extends PHPUnit\Framework\TestCase
 {
 	public function testTextCanBeCreated(): void
 	{
+		$this->expectNotToPerformAssertions(); 
+		
 		new Datepicker('birthdate');
 	}
 

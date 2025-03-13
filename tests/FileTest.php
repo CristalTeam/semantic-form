@@ -6,7 +6,9 @@ final class FileTest extends PHPUnit\Framework\TestCase
 {
 	public function testFileCanBeCreated(): void
 	{
-		$file = new File('article');
+		$this->expectNotToPerformAssertions(); 
+
+		new File('article');
 	}
 
 	public function testRenderFileInput(): void

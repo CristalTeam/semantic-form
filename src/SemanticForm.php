@@ -81,8 +81,8 @@ class SemanticForm
 
         $text->defaultValue($defaultValue);
 
-        foreach( $opt as $option => $value )
-        	@$text->$option($value);
+        foreach ($opt as $option => $value)
+            @$text->$option($value);
 
         if ($this->hasError($name)) {
             $text->setError($this->getError($name));
@@ -164,8 +164,8 @@ class SemanticForm
 
         $textarea->defaultValue($defaultValue);
 
-        foreach( $opt as $option => $value )
-        	@$textarea->$option($value);
+        foreach ($opt as $option => $value)
+            @$textarea->$option($value);
 
         if ($this->hasError($name)) {
             $textarea->setError($this->getError($name));
@@ -191,8 +191,8 @@ class SemanticForm
 
         $oldValue = $this->getValueFor($name);
 
-        foreach( $opt as $option => $value )
-        	@$checkbox->$option($value);
+        foreach ($opt as $option => $value)
+            @$checkbox->$option($value);
 
         if ($value == $oldValue) {
             $checkbox->check();
@@ -203,12 +203,12 @@ class SemanticForm
 
     public function checkboxGroup($name, $options, $checked = [], $modifier = '')
     {
-        $checked = (array)$checked;
+        $checked = (array) $checked;
         $controls = [];
         $oldValue = $this->getValueFor($name);
 
         foreach ($options as $value => $label) {
-            $radio = (new Checkbox($name."[$value]", $value, $modifier))->label($label);
+            $radio = (new Checkbox($name . "[$value]", $value, $modifier))->label($label);
 
             if ($oldValue !== null) {
                 if (in_array($value, $oldValue)) {
@@ -268,13 +268,13 @@ class SemanticForm
         $submit = new Button($value);
         $submit->attribute('type', 'submit');
 
-        foreach( $opt as $option => $value )
-        	@$submit->$option($value);
+        foreach ($opt as $option => $value)
+            @$submit->$option($value);
 
         return $submit;
     }
 
-    public function select($name, $options = [], $defaultValue = null, $opt = ['addClass' => 'fluid'])
+    public function select($name, $options = array(), $defaultValue = null, $opt = ['addClass' => 'fluid'])
     {
         $select = new Select($name, $options);
 
@@ -283,8 +283,8 @@ class SemanticForm
 
         $select->defaultValue($defaultValue);
 
-        foreach( $opt as $option => $value )
-        	@$select->$option($value);
+        foreach ($opt as $option => $value)
+            @$select->$option($value);
 
         return $select;
     }
@@ -365,7 +365,7 @@ class SemanticForm
 
     public function bind($model)
     {
-        $this->model = is_array($model) ? (object)$model : $model;
+        $this->model = is_array($model) ? (object) $model : $model;
     }
 
     public function getValueFor($name)
@@ -426,12 +426,20 @@ class SemanticForm
     public function selectMonth($name, $format = '%B')
     {
         $months = [];
+
+        $format = str_replace(
+            ['%Y', '%m', '%d', '%H', '%M', '%S', '%A', '%a', '%B', '%b'],
+            ['Y', 'm', 'd', 'H', 'i', 's', 'l', 'D', 'F', 'M'],
+            $format
+        );
+
         foreach (range(1, 12) as $month) {
-            $months[$month] = strftime($format, mktime(0, 0, 0, $month, 1));
+            $months[$month] = Carbon::create(null, $month, 1)->translatedFormat($format);
         }
 
         return $this->select($name, $months);
     }
+
 
     public function selectRange($name, $begin, $end)
     {
@@ -446,9 +454,9 @@ class SemanticForm
             $endYear = date('Y') + 10;
         }
 
-        $date = (new Field($this->selectRange('_'.$name.'[date]', 1, 31)->addClass('compact')));
-        $month = (new Field($this->selectMonth('_'.$name.'[month]')->addClass('compact')));
-        $year = (new Field($this->selectRange('_'.$name.'[year]', $beginYear, $endYear)->addClass('compact')));
+        $date = (new Field($this->selectRange('_' . $name . '[date]', 1, 31)->addClass('compact')));
+        $month = (new Field($this->selectMonth('_' . $name . '[month]')->addClass('compact')));
+        $year = (new Field($this->selectRange('_' . $name . '[year]', $beginYear, $endYear)->addClass('compact')));
 
         return new SelectDateWrapper($date, $month, $year);
     }
@@ -459,13 +467,13 @@ class SemanticForm
             $endYear = date('Y') + 10;
         }
 
-        $date = (new Field($this->selectRange('_'.$name.'[date]', 1, 31)->addClass('compact')));
-        $month = (new Field($this->selectMonth('_'.$name.'[month]')->addClass('compact')));
-        $year = (new Field($this->selectRange('_'.$name.'[year]', $beginYear, $endYear)->addClass('compact')));
+        $date = (new Field($this->selectRange('_' . $name . '[date]', 1, 31)->addClass('compact')));
+        $month = (new Field($this->selectMonth('_' . $name . '[month]')->addClass('compact')));
+        $year = (new Field($this->selectRange('_' . $name . '[year]', $beginYear, $endYear)->addClass('compact')));
 
         $timeOptions = $this->getTimeOptions($interval);
 
-        $time = (new Field($this->select('_'.$name.'[time]', $timeOptions)->addClass('compact')));
+        $time = (new Field($this->select('_' . $name . '[time]', $timeOptions)->addClass('compact')));
 
         return new SelectDateTimeWrapper($date, $month, $year, $time);
     }

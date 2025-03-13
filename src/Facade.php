@@ -6,8 +6,8 @@ class Facade extends \Illuminate\Support\Facades\Facade
     /**
      * {@inheritDoc}
      */
-    protected static function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
-        return 'semantic-form';
+        return SemanticForm::class;
     }
 }
