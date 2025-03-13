@@ -6,7 +6,9 @@ final class CheckboxTest extends PHPUnit\Framework\TestCase
 {
 	public function testCheckboxCanBeCreated(): void
 	{
-		$checkbox = new Checkbox('terms');
+		$this->expectNotToPerformAssertions();
+
+		new Checkbox('terms');
 	}
 
 	public function testRenderBasicCheckbox(): void

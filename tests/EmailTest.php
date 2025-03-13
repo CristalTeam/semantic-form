@@ -6,7 +6,9 @@ final class EmailTest extends PHPUnit\Framework\TestCase
 {
 	public function testEmailCanBeCreated(): void
 	{
-		$email = new Email('email');
+		$this->expectNotToPerformAssertions(); 
+
+		new Email('email');
 	}
 
 	public function testRenderEmailInput(): void
