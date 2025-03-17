@@ -2,7 +2,7 @@
 
 use Laravolt\SemanticForm\SemanticForm;
 
-class SemanticFormTest extends PHPUnit_Framework_TestCase
+class SemanticFormTest extends PHPUnit\Framework\TestCase
 {
     public function setUp()
     {

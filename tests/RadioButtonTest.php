@@ -2,7 +2,7 @@
 
 use Laravolt\SemanticForm\Elements\RadioButton;
 
-class RadioButtonTest extends PHPUnit_Framework_TestCase
+class RadioButtonTest extends PHPUnit\Framework\TestCase
 {
 	public function testRadioButtonCanBeCreated()
 	{
