@@ -2,7 +2,7 @@
 
 use Laravolt\SemanticForm\Elements\Email;
 
-class EmailTest extends PHPUnit\Framework\TestCase
+final class EmailTest extends PHPUnit\Framework\TestCase
 {
 	public function testEmailCanBeCreated(): void
 	{
