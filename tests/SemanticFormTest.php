@@ -15,26 +15,26 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         Mockery::close();
     }
 
-    public function testSemanticFormCanBeCreated()
+    public function testSemanticFormCanBeCreated(): void
     {
         $formBuilder = new SemanticForm;
     }
 
-    public function testFormOpen()
+    public function testFormOpen(): void
     {
         $expected = '<form method="POST" action="" class="ui form">';
         $result = (string)$this->form->open();
         $this->assertEquals($expected, $result);
     }
 
-    public function testCanCloseForm()
+    public function testCanCloseForm(): void
     {
         $expected = '</form>';
         $result = (string)$this->form->close();
         $this->assertEquals($expected, $result);
     }
 
-    public function testTextBox()
+    public function testTextBox(): void
     {
         $expected = '<input type="text" name="email">';
         $result = (string)$this->form->text('email');
@@ -45,14 +45,14 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testTextBoxWithLabel()
+    public function testTextBoxWithLabel(): void
     {
         $expected = '<div class="field"><label>Email</label><input type="text" name="email"></div>';
         $result = (string)$this->form->text('email')->label('Email');
         $this->assertEquals($expected, $result);
     }
 
-    public function testPassword()
+    public function testPassword(): void
     {
         $expected = '<input type="password" name="password">';
         $result = (string)$this->form->password('password');
@@ -63,14 +63,14 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testPasswordWithLabel()
+    public function testPasswordWithLabel(): void
     {
         $expected = '<div class="field"><label>Password</label><input type="password" name="password"></div>';
         $result = (string)$this->form->password('password')->label('Password');
         $this->assertEquals($expected, $result);
     }
 
-    public function testCheckbox()
+    public function testCheckbox(): void
     {
         $expected = '<input type="checkbox" name="terms" value="1">';
         $result = (string)$this->form->checkbox('terms');
@@ -81,14 +81,14 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testCheckboxWithLabel()
+    public function testCheckboxWithLabel(): void
     {
         $expected = '<div class="field"><div class="ui checkbox"><input type="checkbox" name="terms" value="1"><label>Term</label></div></div>';
         $result = (string)$this->form->checkbox('terms')->label('Term');
         $this->assertEquals($expected, $result);
     }
 
-    public function testRadio()
+    public function testRadio(): void
     {
         $expected = '<input type="radio" name="terms" value="terms">';
         $result = (string)$this->form->radio('terms');
@@ -99,14 +99,14 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testRadioWithLabel()
+    public function testRadioWithLabel(): void
     {
         $expected = '<div class="field"><div class="ui radio checkbox"><input type="radio" name="terms" value="terms"><label>Term</label></div></div>';
         $result = (string)$this->form->radio('terms')->label('Term');
         $this->assertEquals($expected, $result);
     }
 
-    public function testRadioGroup()
+    public function testRadioGroup(): void
     {
         $expected = '<div class="grouped fields">';
         $expected .= '<label>Fruit</label>';
@@ -129,7 +129,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testRadioGroupWithValue()
+    public function testRadioGroupWithValue(): void
     {
         $expected = '<div class="grouped fields">';
         $expected .= '<label>Fruit</label>';
@@ -152,7 +152,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testRadioGroupWithValueAndOldInput()
+    public function testRadioGroupWithValueAndOldInput(): void
     {
         $oldInput = Mockery::mock(\Laravolt\SemanticForm\OldInput\OldInputInterface::class);
         $oldInput->shouldReceive('hasOldInput')->andReturn(true);
@@ -182,7 +182,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testRadioGroupInline()
+    public function testRadioGroupInline(): void
     {
         $expected = '<div class="inline fields">';
         $expected .= '<label>Fruit</label>';
@@ -208,7 +208,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testCheckboxGroup()
+    public function testCheckboxGroup(): void
     {
         $expected = '<div class="grouped fields">';
         $expected .= '<label>Fruit</label>';
@@ -231,7 +231,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testCheckboxGroupWithValue()
+    public function testCheckboxGroupWithValue(): void
     {
         $expected = '<div class="grouped fields">';
         $expected .= '<label>Fruit</label>';
@@ -257,7 +257,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testCheckboxGroupWithValueAndOldInput()
+    public function testCheckboxGroupWithValueAndOldInput(): void
     {
         $oldInput = Mockery::mock(\Laravolt\SemanticForm\OldInput\OldInputInterface::class);
         $oldInput->shouldReceive('hasOldInput')->andReturn(true);
@@ -289,7 +289,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testCheckboxGroupInline()
+    public function testCheckboxGroupInline(): void
     {
         $expected = '<div class="inline fields">';
         $expected .= '<label>Fruit</label>';
@@ -312,7 +312,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testSubmit()
+    public function testSubmit(): void
     {
         $expected = '<button type="submit" class="ui button">Sign In</button>';
         $result = (string)$this->form->submit('Sign In');
@@ -320,13 +320,13 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
     }
 
     #[DataProvider('buttonProvider')]
-    public function testButton($value, $name, $expected)
+    public function testButton($value, $name, $expected): void
     {
         $result = (string)$this->form->button($value, $name);
         $this->assertEquals($expected, $result);
     }
 
-    public static function buttonProvider()
+    public static function buttonProvider(): array
     {
         return [
             ['Click Me', 'click-me', '<button type="button" class="ui button" name="click-me">Click Me</button>'],
@@ -334,7 +334,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         ];
     }
 
-    public function testSelect()
+    public function testSelect(): void
     {
         $expected = '<select class="ui dropdown search" name="color"><option value="red">Red</option><option value="blue">Blue</option></select>';
         $result = (string)$this->form->select('color', ['red' => 'Red', 'blue' => 'Blue']);
@@ -349,42 +349,42 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testSelectWithLabel()
+    public function testSelectWithLabel(): void
     {
         $expected = '<div class="field"><label>Color</label><select class="ui dropdown search" name="color"><option value="red">Red</option><option value="blue">Blue</option></select></div>';
         $result = (string)$this->form->select('color', ['red' => 'Red', 'blue' => 'Blue'])->label('Color');
         $this->assertEquals($expected, $result);
     }
 
-    public function testSelectCanPrependOption()
+    public function testSelectCanPrependOption(): void
     {
         $expected = '<select class="ui dropdown search" name="color"><option value="">First</option><option value="red">Red</option><option value="blue">Blue</option></select>';
         $result = (string)$this->form->select('color', ['red' => 'Red', 'blue' => 'Blue'])->prependOption('', 'First');
         $this->assertEquals($expected, $result);
     }
 
-    public function testSelectCanHavePlaceholder()
+    public function testSelectCanHavePlaceholder(): void
     {
         $expected = '<select class="ui dropdown search" name="color"><option value="">Please Select</option><option value="red">Red</option><option value="blue">Blue</option></select>';
         $result = (string)$this->form->select('color', ['red' => 'Red', 'blue' => 'Blue'])->placeholder('Please Select');
         $this->assertEquals($expected, $result);
     }
 
-    public function testSelectCanHavePlaceholderWithDefaultLabel()
+    public function testSelectCanHavePlaceholderWithDefaultLabel(): void
     {
         $expected = '<select class="ui dropdown search" name="color"><option value="">-- Select --</option><option value="red">Red</option><option value="blue">Blue</option></select>';
         $result = (string)$this->form->select('color', ['red' => 'Red', 'blue' => 'Blue'])->placeholder();
         $this->assertEquals($expected, $result);
     }
 
-    public function testSelectCanAppendOption()
+    public function testSelectCanAppendOption(): void
     {
         $expected = '<select class="ui dropdown search" name="color"><option value="red">Red</option><option value="blue">Blue</option><option value="">Last</option></select>';
         $result = (string)$this->form->select('color', ['red' => 'Red', 'blue' => 'Blue'])->appendOption('', 'Last');
         $this->assertEquals($expected, $result);
     }
 
-    public function testTextArea()
+    public function testTextArea(): void
     {
         $expected = '<textarea name="bio" rows="10" cols="50"></textarea>';
         $result = (string)$this->form->textarea('bio');
@@ -395,14 +395,14 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testTextAreaWithLabel()
+    public function testTextAreaWithLabel(): void
     {
         $expected = '<div class="field"><label>Bio</label><textarea name="bio" rows="10" cols="50"></textarea></div>';
         $result = (string)$this->form->textarea('bio')->label('Bio');
         $this->assertEquals($expected, $result);
     }
 
-    public function testLabel()
+    public function testLabel(): void
     {
         $expected = '<label>Email</label>';
         $result = (string)$this->form->label('Email');
@@ -413,7 +413,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testRenderTextWithOldInput()
+    public function testRenderTextWithOldInput(): void
     {
         $oldInput = Mockery::mock(\Laravolt\SemanticForm\OldInput\OldInputInterface::class);
         $oldInput->shouldReceive('hasOldInput')->andReturn(true);
@@ -426,7 +426,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testRenderCheckboxWithOldInput()
+    public function testRenderCheckboxWithOldInput(): void
     {
         $oldInput = Mockery::mock(\Laravolt\SemanticForm\OldInput\OldInputInterface::class);
         $oldInput->shouldReceive('hasOldInput')->andReturn(true);
@@ -439,7 +439,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testRenderRadioWithOldInput()
+    public function testRenderRadioWithOldInput(): void
     {
         $oldInput = Mockery::mock(\Laravolt\SemanticForm\OldInput\OldInputInterface::class);
         $oldInput->shouldReceive('hasOldInput')->andReturn(true);
@@ -452,7 +452,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testRenderSelectWithOldInput()
+    public function testRenderSelectWithOldInput(): void
     {
         $oldInput = Mockery::mock(\Laravolt\SemanticForm\OldInput\OldInputInterface::class);
         $oldInput->shouldReceive('hasOldInput')->andReturn(true);
@@ -465,7 +465,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testRenderTextAreaWithOldInput()
+    public function testRenderTextAreaWithOldInput(): void
     {
         $oldInput = Mockery::mock(\Laravolt\SemanticForm\OldInput\OldInputInterface::class);
         $oldInput->shouldReceive('hasOldInput')->andReturn(true);
@@ -478,7 +478,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testRenderingTextAreaWithOldInputEscapesDangerousCharacters()
+    public function testRenderingTextAreaWithOldInputEscapesDangerousCharacters(): void
     {
         $oldInput = Mockery::mock(\Laravolt\SemanticForm\OldInput\OldInputInterface::class);
         $oldInput->shouldReceive('hasOldInput')->andReturn(true);
@@ -491,14 +491,14 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testNoErrorStoreReturnsNull()
+    public function testNoErrorStoreReturnsNull(): void
     {
         $expected = '';
         $result = (string)$this->form->getError('email');
         $this->assertEquals($expected, $result);
     }
 
-    public function testCanCheckForErrorMessage()
+    public function testCanCheckForErrorMessage(): void
     {
         $errorStore = Mockery::mock(\Laravolt\SemanticForm\ErrorStore\ErrorStoreInterface::class);
         $errorStore->shouldReceive('hasError')->with('email')->andReturn(true);
@@ -517,7 +517,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertFalse($result);
     }
 
-    public function testCanRetrieveErrorMessage()
+    public function testCanRetrieveErrorMessage(): void
     {
         $errorStore = Mockery::mock(\Laravolt\SemanticForm\ErrorStore\ErrorStoreInterface::class);
         $errorStore->shouldReceive('hasError')->andReturn(true);
@@ -530,7 +530,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testCanRetrieveFormattedErrorMessage()
+    public function testCanRetrieveFormattedErrorMessage(): void
     {
         $errorStore = Mockery::mock(\Laravolt\SemanticForm\ErrorStore\ErrorStoreInterface::class);
         $errorStore->shouldReceive('hasError')->andReturn(true);
@@ -543,7 +543,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testFormattedErrorMessageReturnsNothingIfNoError()
+    public function testFormattedErrorMessageReturnsNothingIfNoError(): void
     {
         $errorStore = Mockery::mock(\Laravolt\SemanticForm\ErrorStore\ErrorStoreInterface::class);
         $errorStore->shouldReceive('hasError')->with('email')->andReturn(false);
@@ -555,7 +555,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testHidden()
+    public function testHidden(): void
     {
         $expected = '<input type="hidden" name="secret">';
         $result = (string)$this->form->hidden('secret');
@@ -566,7 +566,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testFile()
+    public function testFile(): void
     {
         $expected = '<input type="file" name="photo">';
         $result = (string)$this->form->file('photo');
@@ -577,7 +577,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testDate()
+    public function testDate(): void
     {
         $expected = '<input type="date" name="date_of_birth">';
         $result = (string)$this->form->date('date_of_birth');
@@ -588,7 +588,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testEmail()
+    public function testEmail(): void
     {
         $expected = '<input type="email" name="email">';
         $result = (string)$this->form->email('email');
@@ -599,7 +599,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testRenderDateWithOldInput()
+    public function testRenderDateWithOldInput(): void
     {
         $oldInput = Mockery::mock(\Laravolt\SemanticForm\OldInput\OldInputInterface::class);
         $oldInput->shouldReceive('hasOldInput')->andReturn(true);
@@ -612,7 +612,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testRenderEmailWithOldInput()
+    public function testRenderEmailWithOldInput(): void
     {
         $oldInput = Mockery::mock(\Laravolt\SemanticForm\OldInput\OldInputInterface::class);
         $oldInput->shouldReceive('hasOldInput')->andReturn(true);
@@ -625,7 +625,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testRenderHiddenWithOldInput()
+    public function testRenderHiddenWithOldInput(): void
     {
         $oldInput = Mockery::mock(\Laravolt\SemanticForm\OldInput\OldInputInterface::class);
         $oldInput->shouldReceive('hasOldInput')->andReturn(true);
@@ -638,12 +638,12 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testCanSetCsrfToken()
+    public function testCanSetCsrfToken(): void
     {
         $this->form->setToken('12345');
     }
 
-    public function testCanRenderCsrfToken()
+    public function testCanRenderCsrfToken(): void
     {
         $this->form->setToken('12345');
 
@@ -652,7 +652,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testTokenIsRenderedAutomaticallyOnOpenIfSet()
+    public function testTokenIsRenderedAutomaticallyOnOpenIfSet(): void
     {
         $this->form->setToken('12345');
         $expected = '<form method="POST" action="" class="ui form"><input type="hidden" name="_token" value="12345">';
@@ -660,21 +660,21 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testSelectMonth()
+    public function testSelectMonth(): void
     {
         $expected = '<select class="ui dropdown search" name="month"><option value="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option></select>';
         $result = (string)$this->form->selectMonth('month');
         $this->assertEquals($expected, $result);
     }
 
-    public function testSelectRange()
+    public function testSelectRange(): void
     {
         $expected = '<select class="ui dropdown search" name="age"><option value="1">1</option><option value="2">2</option></select>';
         $result = (string)$this->form->selectRange('age', 1, 2);
         $this->assertEquals($expected, $result);
     }
 
-    public function testSelectDate()
+    public function testSelectDate(): void
     {
         $date = $this->form->selectRange('_birthdate[date]', 1, 31)->addClass('compact');
         $month = $this->form->selectMonth('_birthdate[month]')->addClass('compact');
@@ -697,7 +697,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testSelectDateWithLabel()
+    public function testSelectDateWithLabel(): void
     {
         $date = $this->form->selectRange('_birthdate[date]', 1, 31)->addClass('compact');
         $month = $this->form->selectMonth('_birthdate[month]')->addClass('compact');
@@ -723,7 +723,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testSelectDateCanHaveValue()
+    public function testSelectDateCanHaveValue(): void
     {
         $date = $this->form->selectRange('_birthdate[date]', 1, 31)->addClass('compact')->select(2);
         $month = $this->form->selectMonth('_birthdate[month]')->addClass('compact')->select(3);
@@ -746,7 +746,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testSelectDateTime()
+    public function testSelectDateTime(): void
     {
         $date = $this->form->selectRange('_schedule[date]', 1, 31)->addClass('compact');
         $month = $this->form->selectMonth('_schedule[month]')->addClass('compact');
@@ -785,7 +785,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testInputWrapper()
+    public function testInputWrapper(): void
     {
         $result = (string)$this->form->input('search');
         $expected = '<div class="ui input"><input type="text" name="search"></div>';
@@ -803,12 +803,12 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testCanBindObject()
+    public function testCanBindObject(): void
     {
         $this->assertTrue(method_exists($this->form, 'bind'));
     }
 
-    public function testBindEmail()
+    public function testBindEmail(): void
     {
         $object = $this->getStubObject();
         $this->form->bind($object);
@@ -817,7 +817,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testBindText()
+    public function testBindText(): void
     {
         $object = $this->getStubObject();
         $this->form->bind($object);
@@ -826,7 +826,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testBindTextWithIntegerZero()
+    public function testBindTextWithIntegerZero(): void
     {
         $object = $this->getStubObject();
         $this->form->bind($object);
@@ -835,7 +835,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testBindDate()
+    public function testBindDate(): void
     {
         $object = $this->getStubObject();
         $this->form->bind($object);
@@ -844,7 +844,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testBindSelect()
+    public function testBindSelect(): void
     {
         $object = $this->getStubObject();
         $this->form->bind($object);
@@ -853,7 +853,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testBindHidden()
+    public function testBindHidden(): void
     {
         $object = $this->getStubObject();
         $this->form->bind($object);
@@ -862,7 +862,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testOldInputTakesPrecedenceOverBinding()
+    public function testOldInputTakesPrecedenceOverBinding(): void
     {
         $oldInput = Mockery::mock(\Laravolt\SemanticForm\OldInput\OldInputInterface::class);
         $oldInput->shouldReceive('hasOldInput')->andReturn(true);
@@ -876,7 +876,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testBindCheckbox()
+    public function testBindCheckbox(): void
     {
         $object = $this->getStubObject();
         $this->form->bind($object);
@@ -885,7 +885,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testValueTakesPrecedenceOverBinding()
+    public function testValueTakesPrecedenceOverBinding(): void
     {
         $object = $this->getStubObject();
         $this->form->bind($object);
@@ -894,7 +894,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testBindUnsetProperty()
+    public function testBindUnsetProperty(): void
     {
         $object = $this->getStubObject();
         $this->form->bind($object);
@@ -903,7 +903,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testBindMagicProperty()
+    public function testBindMagicProperty(): void
     {
         $object = new MagicGetter;
         $this->form->bind($object);
@@ -912,7 +912,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testBindArray()
+    public function testBindArray(): void
     {
         $model = ['first_name' => 'John'];
         $this->form->bind($model);
@@ -921,7 +921,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testCloseUnbindsModel()
+    public function testCloseUnbindsModel(): void
     {
         $object = $this->getStubObject();
         $this->form->bind($object);
@@ -931,7 +931,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testAgainstXSSAttacksInBoundModels()
+    public function testAgainstXSSAttacksInBoundModels(): void
     {
         $object = $this->getStubObject();
         $object->first_name = '" onmouseover="alert(\'xss\')';
@@ -941,7 +941,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testRemoveClass()
+    public function testRemoveClass(): void
     {
         $expected = '<input type="text" name="food">';
         $result = (string)$this->form->text('food')
@@ -951,7 +951,7 @@ class SemanticFormTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testGetTypeAttribute()
+    public function testGetTypeAttribute(): void
     {
         $expected = 'radio';
         $result = $this->form->radio('fm-transmission')->getAttribute('type');

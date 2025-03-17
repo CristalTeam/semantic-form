@@ -4,12 +4,12 @@ use Laravolt\SemanticForm\Elements\Datepicker;
 
 class DatepickerTest extends PHPUnit\Framework\TestCase
 {
-	public function testTextCanBeCreated()
+	public function testTextCanBeCreated(): void
 	{
 		new Datepicker('birthdate');
 	}
 
-	public function testCanRenderBasicText()
+	public function testCanRenderBasicText(): void
 	{
 		$text = new Datepicker('birthdate');
 

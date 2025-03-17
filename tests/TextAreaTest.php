@@ -4,12 +4,12 @@ use Laravolt\SemanticForm\Elements\TextArea;
 
 class TextAreaTest extends PHPUnit\Framework\TestCase
 {
-	public function testTextAreaCanBeCreated()
+	public function testTextAreaCanBeCreated(): void
 	{
 		$textarea = new TextArea('bio');
 	}
 
-	public function testRenderBasicTextArea()
+	public function testRenderBasicTextArea(): void
 	{
 		$textarea = new TextArea('bio');
 		$expected = '<textarea name="bio" rows="10" cols="50"></textarea>';
@@ -24,7 +24,7 @@ class TextAreaTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testRenderWithCustomRows()
+	public function testRenderWithCustomRows(): void
 	{
 		$textarea = new TextArea('bio');
 		$expected = '<textarea name="bio" rows="5" cols="50"></textarea>';
@@ -39,7 +39,7 @@ class TextAreaTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testRenderWithCustomCols()
+	public function testRenderWithCustomCols(): void
 	{
 		$textarea = new TextArea('bio');
 		$expected = '<textarea name="bio" rows="10" cols="30"></textarea>';
@@ -54,7 +54,7 @@ class TextAreaTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testRenderWithValue()
+	public function testRenderWithValue(): void
 	{
 		$textarea = new TextArea('bio');
 		$expected = '<textarea name="bio" rows="10" cols="50">Sample text</textarea>';
@@ -69,7 +69,7 @@ class TextAreaTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testRenderWithPlaceholder()
+	public function testRenderWithPlaceholder(): void
 	{
 		$textarea = new TextArea('bio');
 		$expected = '<textarea name="bio" rows="10" cols="50" placeholder="Your bio"></textarea>';
@@ -84,7 +84,7 @@ class TextAreaTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testDefaultValue()
+	public function testDefaultValue(): void
 	{
 		$textarea = new TextArea('bio');
 		$expected = '<textarea name="bio" rows="10" cols="50">My information</textarea>';
@@ -123,7 +123,7 @@ class TextAreaTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testCanAddAttributesThroughMagicMethods()
+	public function testCanAddAttributesThroughMagicMethods(): void
 	{
 		$text = new TextArea('bio');
 		$text = $text->maxlength('5');
