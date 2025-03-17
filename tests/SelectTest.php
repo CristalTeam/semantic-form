@@ -4,12 +4,12 @@ use Laravolt\SemanticForm\Elements\Select;
 
 class SelectTest extends PHPUnit\Framework\TestCase
 {
-	public function testSelectCanBeCreated()
+	public function testSelectCanBeCreated(): void
 	{
 		$select = new Select('birth_year');
 	}
 
-	public function testCanRenderBasicSelect()
+	public function testCanRenderBasicSelect(): void
 	{
 		$select = new Select('birth_year');
 		$expected = '<select class="ui dropdown search" name="birth_year"></select>';
@@ -22,7 +22,7 @@ class SelectTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testSelectCanBeCreatedWithOptions()
+	public function testSelectCanBeCreatedWithOptions(): void
 	{
 		$select = new Select('birth_year', [1990, 1991, 1992]);
 		$expected = '<select class="ui dropdown search" name="birth_year"><option value="0">1990</option><option value="1">1991</option><option value="2">1992</option></select>';
@@ -37,7 +37,7 @@ class SelectTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testSelectCanBeCreatedWithKeyValueOptions()
+	public function testSelectCanBeCreatedWithKeyValueOptions(): void
 	{
 		$select = new Select('color', ['red' => 'Red', 'blue' => 'Blue']);
 		$expected = '<select class="ui dropdown search" name="color"><option value="red">Red</option><option value="blue">Blue</option></select>';
@@ -52,7 +52,7 @@ class SelectTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testCanAddOption()
+	public function testCanAddOption(): void
 	{
 		$select = new Select('color', ['red' => 'Red']);
 		$select->addOption('blue', 'Blue');
@@ -69,7 +69,7 @@ class SelectTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testCanSetOptions()
+	public function testCanSetOptions(): void
 	{
 		$select = new Select('color');
 		$select->options(['red' => 'Red', 'blue' => 'Blue']);
@@ -86,7 +86,7 @@ class SelectTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testCanSetSelectedOption()
+	public function testCanSetSelectedOption(): void
 	{
 		$select = new Select('color');
 		$select->options(['red' => 'Red', 'blue' => 'Blue']);
@@ -103,7 +103,7 @@ class SelectTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testCanSelectNumericKeys()
+	public function testCanSelectNumericKeys(): void
 	{
 		$select = new Select('fruit');
 		$select->options(['1' => 'Granny Smith', '2' => 'Blueberry']);
@@ -120,7 +120,7 @@ class SelectTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testCanSetDefaultOption()
+	public function testCanSetDefaultOption(): void
 	{
 		$select = new Select('color', ['red' => 'Red', 'blue' => 'Blue']);
 		$expected = '<select class="ui dropdown search" name="color"><option value="red">Red</option><option value="blue" selected>Blue</option></select>';
@@ -147,7 +147,7 @@ class SelectTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testCanSetDefaultOptionMultiselect()
+	public function testCanSetDefaultOptionMultiselect(): void
 	{
 		$select = new Select('color', ['red' => 'Red', 'blue' => 'Blue']);
 		$expected = '<select class="ui dropdown search" name="color"><option value="red" selected>Red</option><option value="blue" selected>Blue</option></select>';
@@ -174,7 +174,7 @@ class SelectTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testCanUseNestedOptions()
+	public function testCanUseNestedOptions(): void
 	{
 		$options = [
 			'Ontario' => [
@@ -193,7 +193,7 @@ class SelectTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testCanUseNestedOptionsWithoutKeys()
+	public function testCanUseNestedOptionsWithoutKeys(): void
 	{
 		$options = [
 			'Ontario' => [
@@ -212,7 +212,7 @@ class SelectTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testCanMixNestedAndUnnestedOptions()
+	public function testCanMixNestedAndUnnestedOptions(): void
 	{
 		$options = [
 			'toronto' => 'Toronto',
@@ -229,7 +229,7 @@ class SelectTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testSelectCanBeCreatedWithIntegerKeyValueOptions()
+	public function testSelectCanBeCreatedWithIntegerKeyValueOptions(): void
 	{
 		$select = new Select('color', ['0' => 'Red', '1' => 'Blue']);
 		$expected = '<select class="ui dropdown search" name="color"><option value="0">Red</option><option value="1">Blue</option></select>';
@@ -242,7 +242,7 @@ class SelectTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testSelectCanBeMultiple()
+	public function testSelectCanBeMultiple(): void
 	{
 		$select = new Select('people');
 		$expected = '<select class="ui dropdown search" name="people[]" multiple="multiple"></select>';
