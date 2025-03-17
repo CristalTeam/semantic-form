@@ -2,7 +2,7 @@
 
 use Laravolt\SemanticForm\Elements\Button;
 
-class ButtonTest extends PHPUnit\Framework\TestCase
+final class ButtonTest extends PHPUnit\Framework\TestCase
 {
     public function testButtonCanBeCreated(): void
     {

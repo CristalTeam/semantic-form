@@ -2,7 +2,7 @@
 
 use Laravolt\SemanticForm\Elements\Hidden;
 
-class HiddenTest extends PHPUnit\Framework\TestCase
+final class HiddenTest extends PHPUnit\Framework\TestCase
 {
 	public function testTextCanBeCreated(): void
 	{

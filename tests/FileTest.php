@@ -2,7 +2,7 @@
 
 use Laravolt\SemanticForm\Elements\File;
 
-class FileTest extends PHPUnit\Framework\TestCase
+final class FileTest extends PHPUnit\Framework\TestCase
 {
 	public function testFileCanBeCreated(): void
 	{
