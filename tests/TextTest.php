@@ -4,12 +4,12 @@ use Laravolt\SemanticForm\Elements\Text;
 
 class TextTest extends PHPUnit\Framework\TestCase
 {
-	public function testTextCanBeCreated()
+	public function testTextCanBeCreated(): void
 	{
 		$text = new Text('email');
 	}
 
-	public function testCanRenderBasicText()
+	public function testCanRenderBasicText(): void
 	{
 		$text = new Text('email');
 
@@ -24,7 +24,7 @@ class TextTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testCanRenderWithId()
+	public function testCanRenderWithId(): void
 	{
 		$text = new Text('email');
 		$text = $text->id('email_field');
@@ -41,7 +41,7 @@ class TextTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testCanRenderWithValue()
+	public function testCanRenderWithValue(): void
 	{
 		$text = new Text('email');
 		$text = $text->value('example@example.com');
@@ -65,7 +65,7 @@ class TextTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testCanRenderWithClass()
+	public function testCanRenderWithClass(): void
 	{
 		$text = new Text('email');
 		$text = $text->addClass('error');
@@ -82,7 +82,7 @@ class TextTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testCanRenderWithPlaceholder()
+	public function testCanRenderWithPlaceholder(): void
 	{
 		$text = new Text('email');
 		$text = $text->placeholder('error');
@@ -99,7 +99,7 @@ class TextTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testCanBeCastToString()
+	public function testCanBeCastToString(): void
 	{
 		$text = new Text('email');
 
@@ -108,7 +108,7 @@ class TextTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testRequired()
+	public function testRequired(): void
 	{
 		$text = new Text('email');
 
@@ -117,7 +117,7 @@ class TextTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-    public function testAutofocus()
+    public function testAutofocus(): void
     {
         $text = new Text('');
 
@@ -126,7 +126,7 @@ class TextTest extends PHPUnit\Framework\TestCase
         $this->assertStringContainsString('autofocus="autofocus"', $result, $message);
     }
 
-    public function testUnfocus() {
+    public function testUnfocus(): void {
         $pattern = 'autofocus="autofocus"';
         $text = new Text('');
 
@@ -141,7 +141,7 @@ class TextTest extends PHPUnit\Framework\TestCase
         $this->assertStringNotContainsString($pattern, $result, $message);
     }
 
-	public function testOptional()
+	public function testOptional(): void
 	{
 		$text = new Text('email');
 
@@ -156,7 +156,7 @@ class TextTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testDisable()
+	public function testDisable(): void
 	{
 		$text = new Text('email');
 
@@ -165,7 +165,7 @@ class TextTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testEnable()
+	public function testEnable(): void
 	{
 		$text = new Text('email');
 
@@ -180,7 +180,7 @@ class TextTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testDefaultValue()
+	public function testDefaultValue(): void
 	{
 		$text = new Text('email');
 
@@ -201,7 +201,7 @@ class TextTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testCustomAttribute()
+	public function testCustomAttribute(): void
 	{
 		$text = new Text('email');
 
@@ -214,7 +214,7 @@ class TextTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testDataAttribute()
+	public function testDataAttribute(): void
 	{
 		$text = new Text('email');
 
@@ -229,7 +229,7 @@ class TextTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testCanRemoveClass()
+	public function testCanRemoveClass(): void
 	{
 		$text = new Text('email');
 		$text = $text->addClass('error');
@@ -251,7 +251,7 @@ class TextTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testCanAddAttributesThroughMagicMethods()
+	public function testCanAddAttributesThroughMagicMethods(): void
 	{
 		$text = new Text('email');
 		$text = $text->maxlength('5');
@@ -261,7 +261,7 @@ class TextTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testCanAddAttributesThroughMagicMethodsWithOptionalParameter()
+	public function testCanAddAttributesThroughMagicMethodsWithOptionalParameter(): void
 	{
 		$text = new Text('cow');
 		$text = $text->moo();
@@ -271,7 +271,7 @@ class TextTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testCanHaveLabel()
+	public function testCanHaveLabel(): void
 	{
 		$text = (new Text('email'))->label('Email');
 

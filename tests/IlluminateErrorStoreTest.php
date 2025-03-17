@@ -5,7 +5,7 @@ use Illuminate\Support\MessageBag;
 
 class IlluminateErrorStoreTest extends PHPUnit\Framework\TestCase
 {
-    public function test_it_converts_array_keys_to_dot_notation()
+    public function test_it_converts_array_keys_to_dot_notation(): void
     {
         $errors = new MessageBag([
             'foo.bar' => 'Some error',

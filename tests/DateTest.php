@@ -4,12 +4,12 @@ use Laravolt\SemanticForm\Elements\Date;
 
 class DateTest extends PHPUnit\Framework\TestCase
 {
-	public function testDateCanBeCreated()
+	public function testDateCanBeCreated(): void
 	{
 		$date = new Date('birthday');
 	}
 
-	public function testRenderDateInput()
+	public function testRenderDateInput(): void
 	{
 		$date = new Date('birthday');
 		$expected = '<input type="date" name="birthday">';
