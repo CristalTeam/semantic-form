@@ -24,13 +24,13 @@ class SelectTest extends PHPUnit_Framework_TestCase
 
 	public function testSelectCanBeCreatedWithOptions()
 	{
-		$select = new Select('birth_year', array(1990, 1991, 1992));
+		$select = new Select('birth_year', [1990, 1991, 1992]);
 		$expected = '<select class="ui dropdown search" name="birth_year"><option value="0">1990</option><option value="1">1991</option><option value="2">1992</option></select>';
 		$result = $select->render();
 
 		$this->assertEquals($expected, $result);
 
-		$select = new Select('birth_year', array(2001, 2002, 2003));
+		$select = new Select('birth_year', [2001, 2002, 2003]);
 		$expected = '<select class="ui dropdown search" name="birth_year"><option value="0">2001</option><option value="1">2002</option><option value="2">2003</option></select>';
 		$result = $select->render();
 
@@ -39,13 +39,13 @@ class SelectTest extends PHPUnit_Framework_TestCase
 
 	public function testSelectCanBeCreatedWithKeyValueOptions()
 	{
-		$select = new Select('color', array('red' => 'Red', 'blue' => 'Blue'));
+		$select = new Select('color', ['red' => 'Red', 'blue' => 'Blue']);
 		$expected = '<select class="ui dropdown search" name="color"><option value="red">Red</option><option value="blue">Blue</option></select>';
 		$result = $select->render();
 
 		$this->assertEquals($expected, $result);
 
-		$select = new Select('fruit', array('apple' => 'Granny Smith', 'berry' => 'Blueberry'));
+		$select = new Select('fruit', ['apple' => 'Granny Smith', 'berry' => 'Blueberry']);
 		$expected = '<select class="ui dropdown search" name="fruit"><option value="apple">Granny Smith</option><option value="berry">Blueberry</option></select>';
 		$result = $select->render();
 
@@ -54,14 +54,14 @@ class SelectTest extends PHPUnit_Framework_TestCase
 
 	public function testCanAddOption()
 	{
-		$select = new Select('color', array('red' => 'Red'));
+		$select = new Select('color', ['red' => 'Red']);
 		$select->addOption('blue', 'Blue');
 		$expected = '<select class="ui dropdown search" name="color"><option value="red">Red</option><option value="blue">Blue</option></select>';
 		$result = $select->render();
 
 		$this->assertEquals($expected, $result);
 
-		$select = new Select('fruit', array('apple' => 'Granny Smith'));
+		$select = new Select('fruit', ['apple' => 'Granny Smith']);
 		$select->addOption('berry', 'Blueberry');
 		$expected = '<select class="ui dropdown search" name="fruit"><option value="apple">Granny Smith</option><option value="berry">Blueberry</option></select>';
 		$result = $select->render();
@@ -72,14 +72,14 @@ class SelectTest extends PHPUnit_Framework_TestCase
 	public function testCanSetOptions()
 	{
 		$select = new Select('color');
-		$select->options(array('red' => 'Red', 'blue' => 'Blue'));
+		$select->options(['red' => 'Red', 'blue' => 'Blue']);
 		$expected = '<select class="ui dropdown search" name="color"><option value="red">Red</option><option value="blue">Blue</option></select>';
 		$result = $select->render();
 
 		$this->assertEquals($expected, $result);
 
 		$select = new Select('fruit');
-		$select->options(array('apple' => 'Granny Smith', 'berry' => 'Blueberry'));
+		$select->options(['apple' => 'Granny Smith', 'berry' => 'Blueberry']);
 		$expected = '<select class="ui dropdown search" name="fruit"><option value="apple">Granny Smith</option><option value="berry">Blueberry</option></select>';
 		$result = $select->render();
 
@@ -89,14 +89,14 @@ class SelectTest extends PHPUnit_Framework_TestCase
 	public function testCanSetSelectedOption()
 	{
 		$select = new Select('color');
-		$select->options(array('red' => 'Red', 'blue' => 'Blue'));
+		$select->options(['red' => 'Red', 'blue' => 'Blue']);
 		$expected = '<select class="ui dropdown search" name="color"><option value="red">Red</option><option value="blue" selected>Blue</option></select>';
 		$result = $select->select('blue')->render();
 
 		$this->assertEquals($expected, $result);
 
 		$select = new Select('fruit');
-		$select->options(array('apple' => 'Granny Smith', 'berry' => 'Blueberry'));
+		$select->options(['apple' => 'Granny Smith', 'berry' => 'Blueberry']);
 		$expected = '<select class="ui dropdown search" name="fruit"><option value="apple" selected>Granny Smith</option><option value="berry">Blueberry</option></select>';
 		$result = $select->select('apple')->render();
 
@@ -106,14 +106,14 @@ class SelectTest extends PHPUnit_Framework_TestCase
 	public function testCanSelectNumericKeys()
 	{
 		$select = new Select('fruit');
-		$select->options(array('1' => 'Granny Smith', '2' => 'Blueberry'));
+		$select->options(['1' => 'Granny Smith', '2' => 'Blueberry']);
 		$expected = '<select class="ui dropdown search" name="fruit"><option value="1" selected>Granny Smith</option><option value="2">Blueberry</option></select>';
 		$result = $select->select('1')->render();
 
 		$this->assertEquals($expected, $result);
 
 		$select = new Select('fruit');
-		$select->options(array('1' => 'Granny Smith', '2' => 'Blueberry'));
+		$select->options(['1' => 'Granny Smith', '2' => 'Blueberry']);
 		$expected = '<select class="ui dropdown search" name="fruit"><option value="1">Granny Smith</option><option value="2" selected>Blueberry</option></select>';
 		$result = $select->select('2')->render();
 
@@ -122,25 +122,25 @@ class SelectTest extends PHPUnit_Framework_TestCase
 
 	public function testCanSetDefaultOption()
 	{
-		$select = new Select('color', array('red' => 'Red', 'blue' => 'Blue'));
+		$select = new Select('color', ['red' => 'Red', 'blue' => 'Blue']);
 		$expected = '<select class="ui dropdown search" name="color"><option value="red">Red</option><option value="blue" selected>Blue</option></select>';
 		$result = $select->defaultValue('blue')->render();
 
 		$this->assertEquals($expected, $result);
 
-		$select = new Select('fruit', array('apple' => 'Granny Smith', 'berry' => 'Blueberry'));
+		$select = new Select('fruit', ['apple' => 'Granny Smith', 'berry' => 'Blueberry']);
 		$expected = '<select class="ui dropdown search" name="fruit"><option value="apple" selected>Granny Smith</option><option value="berry">Blueberry</option></select>';
 		$result = $select->defaultValue('apple')->render();
 
 		$this->assertEquals($expected, $result);
 
-		$select = new Select('fruit', array('apple' => 'Granny Smith', 'berry' => 'Blueberry'));
+		$select = new Select('fruit', ['apple' => 'Granny Smith', 'berry' => 'Blueberry']);
 		$expected = '<select class="ui dropdown search" name="fruit"><option value="apple">Granny Smith</option><option value="berry" selected>Blueberry</option></select>';
 		$result = $select->select('berry')->defaultValue('apple')->render();
 
 		$this->assertEquals($expected, $result);
 
-		$select = new Select('fruit', array('apple' => 'Granny Smith', 'berry' => 'Blueberry'));
+		$select = new Select('fruit', ['apple' => 'Granny Smith', 'berry' => 'Blueberry']);
 		$expected = '<select class="ui dropdown search" name="fruit"><option value="apple">Granny Smith</option><option value="berry" selected>Blueberry</option></select>';
 		$result = $select->defaultValue('apple')->select('berry')->render();
 
@@ -149,43 +149,43 @@ class SelectTest extends PHPUnit_Framework_TestCase
 
 	public function testCanSetDefaultOptionMultiselect()
 	{
-		$select = new Select('color', array('red' => 'Red', 'blue' => 'Blue'));
+		$select = new Select('color', ['red' => 'Red', 'blue' => 'Blue']);
 		$expected = '<select class="ui dropdown search" name="color"><option value="red" selected>Red</option><option value="blue" selected>Blue</option></select>';
-		$result = $select->defaultValue(array('blue', 'red'))->render();
+		$result = $select->defaultValue(['blue', 'red'])->render();
 
 		$this->assertEquals($expected, $result);
 
-		$select = new Select('fruit', array('apple' => 'Granny Smith', 'berry' => 'Blueberry'));
+		$select = new Select('fruit', ['apple' => 'Granny Smith', 'berry' => 'Blueberry']);
 		$expected = '<select class="ui dropdown search" name="fruit"><option value="apple" selected>Granny Smith</option><option value="berry">Blueberry</option></select>';
-		$result = $select->defaultValue(array('apple'))->render();
+		$result = $select->defaultValue(['apple'])->render();
 
 		$this->assertEquals($expected, $result);
 
-		$select = new Select('fruit', array('apple' => 'Granny Smith', 'berry' => 'Blueberry'));
+		$select = new Select('fruit', ['apple' => 'Granny Smith', 'berry' => 'Blueberry']);
 		$expected = '<select class="ui dropdown search" name="fruit"><option value="apple">Granny Smith</option><option value="berry" selected>Blueberry</option></select>';
-		$result = $select->select('berry')->defaultValue(array('apple', 'berry'))->render();
+		$result = $select->select('berry')->defaultValue(['apple', 'berry'])->render();
 
 		$this->assertEquals($expected, $result);
 
-		$select = new Select('fruit', array('apple' => 'Granny Smith', 'berry' => 'Blueberry'));
+		$select = new Select('fruit', ['apple' => 'Granny Smith', 'berry' => 'Blueberry']);
 		$expected = '<select class="ui dropdown search" name="fruit"><option value="apple">Granny Smith</option><option value="berry" selected>Blueberry</option></select>';
-		$result = $select->defaultValue('apple')->select(array('berry'))->render();
+		$result = $select->defaultValue('apple')->select(['berry'])->render();
 
 		$this->assertEquals($expected, $result);
 	}
 
 	public function testCanUseNestedOptions()
 	{
-		$options = array(
-			'Ontario' => array(
+		$options = [
+			'Ontario' => [
 				'toronto' => 'Toronto',
 				'london' => 'London',
-				),
-			'Quebec' => array(
+				],
+			'Quebec' => [
 				'montreal' => 'Montreal',
 				'quebec-city' => 'Quebec City',
-				),
-			);
+				],
+			];
 		$select = new Select('color', $options);
 		$expected = '<select class="ui dropdown search" name="color"><optgroup label="Ontario"><option value="toronto">Toronto</option><option value="london">London</option></optgroup><optgroup label="Quebec"><option value="montreal">Montreal</option><option value="quebec-city">Quebec City</option></optgroup></select>';
 		$result = $select->render();
@@ -195,16 +195,16 @@ class SelectTest extends PHPUnit_Framework_TestCase
 
 	public function testCanUseNestedOptionsWithoutKeys()
 	{
-		$options = array(
-			'Ontario' => array(
+		$options = [
+			'Ontario' => [
 				'Toronto',
 				'London',
-				),
-			'Quebec' => array(
+				],
+			'Quebec' => [
 				'Montreal',
 				'Quebec City',
-				),
-			);
+				],
+			];
 		$select = new Select('color', $options);
 		$expected = '<select class="ui dropdown search" name="color"><optgroup label="Ontario"><option value="0">Toronto</option><option value="1">London</option></optgroup><optgroup label="Quebec"><option value="0">Montreal</option><option value="1">Quebec City</option></optgroup></select>';
 		$result = $select->render();
@@ -214,14 +214,14 @@ class SelectTest extends PHPUnit_Framework_TestCase
 
 	public function testCanMixNestedAndUnnestedOptions()
 	{
-		$options = array(
+		$options = [
 			'toronto' => 'Toronto',
 			'london' => 'London',
-			'Quebec' => array(
+			'Quebec' => [
 				'montreal' => 'Montreal',
 				'quebec-city' => 'Quebec City',
-				),
-			);
+				],
+			];
 		$select = new Select('color', $options);
 		$expected = '<select class="ui dropdown search" name="color"><option value="toronto">Toronto</option><option value="london">London</option><optgroup label="Quebec"><option value="montreal">Montreal</option><option value="quebec-city">Quebec City</option></optgroup></select>';
 		$result = $select->render();
@@ -231,12 +231,12 @@ class SelectTest extends PHPUnit_Framework_TestCase
 
 	public function testSelectCanBeCreatedWithIntegerKeyValueOptions()
 	{
-		$select = new Select('color', array('0' => 'Red', '1' => 'Blue'));
+		$select = new Select('color', ['0' => 'Red', '1' => 'Blue']);
 		$expected = '<select class="ui dropdown search" name="color"><option value="0">Red</option><option value="1">Blue</option></select>';
 		$result = $select->render();
 		$this->assertEquals($expected, $result);
 
-		$select = new Select('fruit', array('1' => 'Granny Smith', '0' => 'Blueberry'));
+		$select = new Select('fruit', ['1' => 'Granny Smith', '0' => 'Blueberry']);
 		$expected = '<select class="ui dropdown search" name="fruit"><option value="1">Granny Smith</option><option value="0">Blueberry</option></select>';
 		$result = $select->render();
 		$this->assertEquals($expected, $result);

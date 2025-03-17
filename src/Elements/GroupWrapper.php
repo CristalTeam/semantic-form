@@ -45,7 +45,7 @@ class GroupWrapper
 
 	public function __call($method, $parameters)
 	{
-		call_user_func_array(array($this->formGroup->control(), $method), $parameters);
+		call_user_func_array([$this->formGroup->control(), $method], $parameters);
 		return $this;
 	}
 }

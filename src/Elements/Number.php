@@ -2,7 +2,7 @@
 
 class Number extends Text
 {
-    protected $attributes = array(
+    protected $attributes = [
         'type' => 'number',
-    );
+    ];
 }
