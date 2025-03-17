@@ -4,11 +4,8 @@ use Illuminate\Session\Store as Session;
 
 class IlluminateErrorStore implements ErrorStoreInterface
 {
-    private $session;
-
-    public function __construct(Session $session)
+    public function __construct(private Session $session)
     {
-        $this->session = $session;
     }
 
     public function hasError($key)

@@ -4,11 +4,8 @@ use Laravolt\SemanticForm\Elements\Element;
 
 class HelpBlock extends Element
 {
-	private $message;
-
-	public function __construct($message)
+	public function __construct(private $message)
 	{
-		$this->message = $message;
 		$this->addClass('help-block');
 	}
 

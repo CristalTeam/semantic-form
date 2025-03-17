@@ -135,7 +135,7 @@ class Select extends FormControl
     public function multiple()
     {
         $name = $this->attributes['name'];
-        if (substr($name, -2) != '[]') {
+        if (!str_ends_with($name, '[]')) {
             $name .= '[]';
         }
 
