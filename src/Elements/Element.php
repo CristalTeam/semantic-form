@@ -90,7 +90,7 @@ abstract class Element implements \Stringable
         if (isset($this->attributes['class'])) {
 
             $existingClasses = explode(' ', $this->attributes['class']);
-            $newClasses = explode(' ', $class);
+            $newClasses = explode(' ', (string) $class);
 
             $class = implode(' ', array_unique(array_merge($existingClasses, $newClasses)));
 
@@ -191,7 +191,7 @@ abstract class Element implements \Stringable
     {
         $params = count($params) ? $params : [$method];
         $params = array_merge([$method], $params);
-        call_user_func_array([$this, 'attribute'], $params);
+        call_user_func_array($this->attribute(...), $params);
 
         return $this;
     }
