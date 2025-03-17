@@ -2,9 +2,9 @@
 
 class Checkbox extends Input
 {
-    protected $attributes = array(
+    protected $attributes = [
         'type' => 'checkbox',
-    );
+    ];
 
     private $modifier = '';
 
