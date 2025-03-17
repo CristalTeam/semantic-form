@@ -6,15 +6,12 @@ class UiLabel extends Element
         'class' => 'ui label',
     ];
 
-    protected $text;
-
     /**
      * Icon constructor.
      * @param string icon name
      */
-    public function __construct($text)
+    public function __construct(protected $text)
     {
-        $this->text = $text;
     }
 
 

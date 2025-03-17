@@ -4,11 +4,9 @@ class Label extends Element
 {
     private $element;
     private $labelBefore;
-    private $text;
 
-    public function __construct($text)
+    public function __construct(private $text)
     {
-        $this->text = $text;
     }
 
     public function render()

@@ -16,7 +16,7 @@ class SelectDateWrapper extends Wrapper
 
         try {
             $date = $this->asDateTime($value);
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             throw new \InvalidArgumentException('Argument must be an instance of Carbon or DateTime, or date string in Y-m-d format.');
         }
 

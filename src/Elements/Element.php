@@ -1,6 +1,6 @@
 <?php namespace Laravolt\SemanticForm\Elements;
 
-abstract class Element
+abstract class Element implements \Stringable
 {
     protected $attributes = [];
 
@@ -147,9 +147,9 @@ abstract class Element
 
     abstract public function render();
 
-    public function __toString()
+    public function __toString(): string
     {
-        return $this->render();
+        return (string) $this->render();
     }
 
     protected function beforeRender()
