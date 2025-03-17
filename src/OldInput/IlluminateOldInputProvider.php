@@ -4,7 +4,7 @@ use Illuminate\Session\Store as Session;
 
 class IlluminateOldInputProvider implements OldInputInterface
 {
-    public function __construct(private Session $session)
+    public function __construct(private readonly Session $session)
     {
     }
 
