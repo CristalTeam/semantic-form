@@ -3,7 +3,7 @@
 use PHPUnit\Framework\Attributes\DataProvider;
 use Laravolt\SemanticForm\SemanticForm;
 
-class SemanticFormTest extends PHPUnit\Framework\TestCase
+final class SemanticFormTest extends PHPUnit\Framework\TestCase
 {
     protected function setUp(): void
     {

@@ -2,7 +2,7 @@
 
 use Laravolt\SemanticForm\Elements\Datepicker;
 
-class DatepickerTest extends PHPUnit\Framework\TestCase
+final class DatepickerTest extends PHPUnit\Framework\TestCase
 {
 	public function testTextCanBeCreated(): void
 	{

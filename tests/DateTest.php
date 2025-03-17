@@ -2,7 +2,7 @@
 
 use Laravolt\SemanticForm\Elements\Date;
 
-class DateTest extends PHPUnit\Framework\TestCase
+final class DateTest extends PHPUnit\Framework\TestCase
 {
 	public function testDateCanBeCreated(): void
 	{

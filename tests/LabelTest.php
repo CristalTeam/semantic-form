@@ -2,7 +2,7 @@
 
 use Laravolt\SemanticForm\Elements\Label;
 
-class LabelTest extends PHPUnit\Framework\TestCase
+final class LabelTest extends PHPUnit\Framework\TestCase
 {
 	protected function tearDown(): void
 	{
