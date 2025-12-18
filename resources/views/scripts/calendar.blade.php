@@ -1,34 +1,28 @@
 <?php
-$translator = \Jenssegers\Date\Date::getTranslator();
-
-$monthKeys = [
-        'january',
-        'february',
-        'march',
-        'april',
-        'may',
-        'june',
-        'july',
-        'august',
-        'september',
-        'october',
-        'november',
-        'december'
-];
-$dayKeys = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+use Carbon\Carbon;
 
 $months = [];
-foreach ($monthKeys as $key) {
-    $months[] = $translator->transChoice($key, 0);
+for ($m = 1; $m <= 12; $m++) {
+    $months[] = Carbon::create(2000, $m, 1)
+        ->translatedFormat('F');
 }
 
 $days = [];
-foreach ($dayKeys as $key) {
-    $days[] = mb_strtoupper(mb_substr($translator->trans($key), 0, 1));
+$start = Carbon::create(2024, 1, 7);
+
+for ($d = 0; $d < 7; $d++) {
+    $days[] = mb_strtoupper(
+        mb_substr(
+            $start->copy()->addDays($d)->translatedFormat('l'),
+            0,
+            1
+        )
+    );
 }
 
 $months = json_encode($months, JSON_UNESCAPED_UNICODE);
-$days = json_encode($days, JSON_UNESCAPED_UNICODE);
+$days   = json_encode($days, JSON_UNESCAPED_UNICODE);
+
 ?>
 
 <script>
