@@ -19,7 +19,7 @@
     ],
     "require": {
         "php": ">=8.2",
-        "illuminate/support": "^12.11",
+        "illuminate/support": "^12.11|^13.0",
         "nesbot/carbon": "^3.11"
     },
     "require-dev": {
